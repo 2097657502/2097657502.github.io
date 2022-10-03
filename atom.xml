@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://2097657502.github.io</id>
+    <title>NTA_ATN</title>
+    <updated>2022-10-03T00:18:10.414Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://2097657502.github.io"/>
+    <link rel="self" href="https://2097657502.github.io/atom.xml"/>
+    <subtitle>明日何其多</subtitle>
+    <logo>https://2097657502.github.io/images/avatar.png</logo>
+    <icon>https://2097657502.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, NTA_ATN</rights>
+    <entry>
+        <title type="html"><![CDATA[[Database] Ch2 Notebook]]></title>
+        <id>https://2097657502.github.io/post/database-ch2-notebook/</id>
+        <link href="https://2097657502.github.io/post/database-ch2-notebook/">
+        </link>
+        <updated>2022-10-01T17:13:11.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="the-e-r-model"><strong>The E-R Model</strong></h2>
+<ul>
+<li>The E-R (entity-relationship) data model views the real world as a set of basic <strong>objects</strong>(entities) and <strong>relationships</strong> among these objects</li>
+<li>It is intended primarily for the DB design process by allowing the specification of an <strong>enterprise scheme</strong>. This represents the overall logical structure of the DB.</li>
+</ul>
+<h2 id="entities-and-entity-sets"><strong>Entities and Entity Sets</strong></h2>
+<ul>
+<li>An <strong>entity</strong> is an object that exists and is distinguishable from other objects. For instance, Michelle Lee with S.S.N. 890-12-3456 is an entity, as she can be uniquely identified as one particular person in the universe.</li>
+<li>An entity may be <strong>concrete</strong> (a person or a book, for example) or <strong>abstract</strong> (like a holiday or a disease or a concept).</li>
+<li>An <strong>entity set</strong> is a set of entities of the same type (e.g., all persons having an account at a bank).</li>
+<li>Entity sets <strong>need not be disjoint</strong>. For example, the entity set Student (all students in a university) and the entity set professor (all professors in a university) may have members in common. (i.e a computer science professor might take a class in anthropology).</li>
+<li>An entity is represented by a set of <strong>attributes</strong>. (e.g. name, SSN, Phone-Num for &quot;customer&quot;entity.)</li>
+<li>The <strong>domain</strong> of the attribute is the set of permitted values (e.g. the telephone number must be seven positive integers).</li>
+<li>Formally, an attribute is a <strong>function</strong> which maps an entity set into a domain.</li>
+<li>Every entity is described by a set of (attribute, data value) pairs. There is one pair for each attribute of the entity set.</li>
+<li>e.g. a particular student entity is described by the set {(name, Lee), (SSN, 890-123-456), (street, Blaine), (city, Riverside)}.</li>
+</ul>
+<h2 id="e-r-diagrams"><strong>E-R Diagrams</strong></h2>
+<ul>
+<li>We can express the overall logical structure of a database <strong>graphically</strong> with an E-R diagram.</li>
+<li>Its components are:
+<ul>
+<li><strong>rectangles</strong> representing entity sets.</li>
+<li><strong>ellipses</strong> representing attributes.</li>
+<li><strong>diamonds</strong> representing <strong>relationship</strong> sets.</li>
+<li><strong>lines</strong> linking attributes to entity sets and entity sets to relationship sets.<br>
+<img src="https://2097657502.github.io/post-images/1664753256300.jpg" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="how-to-represent-constraintshugely-important"><strong>How to represent Constraints(Hugely important)</strong></h2>
+<ul>
+<li>The constraints are <strong>given</strong> to us <strong>from</strong> the application</li>
+<li>Two main kinds of constraints:
+<ul>
+<li><strong>Key(or cardinality)</strong> constraints</li>
+<li><strong>Participation</strong> constraints</li>
+</ul>
+</li>
+</ul>
+<h2 id="key-constraints"><strong>Key Constraints</strong></h2>
+<ul>
+<li>We can also use arrows to indicate <strong>key constraints</strong> (often simply referred to as <strong>Cardinality Constraints</strong>)</li>
+<li>There are <strong>four possible key constraints</strong>, they express the number of entities to which another entity can be associated via a relationship. For binary relationship sets between entity sets A and B, the mapping cardinality must be one of:
+<ul>
+<li><strong>One-to-one</strong>: An entity in A is associated with at most one entity in B, and an entity in B is associated with at most one entity in A.</li>
+<li><strong>One-to-many</strong>: An entity in A is associated with any number in B. An entity in B is associated with at most one entity in A.</li>
+<li><strong>Many-to-one</strong>: An entity in A is associated with at most one entity in B. An entity in B is associated with any number in A.</li>
+<li><strong>Many-to-many</strong>: Entities in A and B are associated with any number from each other.<br>
+<img src="https://2097657502.github.io/post-images/1664753732766.png" alt="" loading="lazy"><br>
+<img src="https://2097657502.github.io/post-images/1664753935828.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="participation-constraints"><strong>Participation Constraints</strong></h2>
+<ul>
+<li>Does every department have a manager?
+<ul>
+<li>If so, this is a participation constraint:  the participation of Departments in Manages is said to be total (vs. partial).</li>
+<li>Every Departments entity must appear in an instance of the Manages relationship.<br>
+<img src="https://2097657502.github.io/post-images/1664755265760.png" alt="" loading="lazy"><br>
+(Here, every Department must have an employee and every Employee must work in a Department.)<br>
+<img src="https://2097657502.github.io/post-images/1664755355470.png" alt="" loading="lazy"><br>
+<img src="https://2097657502.github.io/post-images/1664755359565.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="keys"><strong>Keys</strong></h2>
+<p>Differences between entities must be expressed in terms of attributes.</p>
+<ul>
+<li>A <strong>superkey</strong> is a set of one or more attributes which, taken collectively,allow us to identify uniquely an entity in the entity set.</li>
+<li>For example, in the entity set student; name and S.S.N. is a superkey.</li>
+<li>Note that name alone is not, as two students could have the same name.</li>
+<li>A superkey may contain extraneous attributes, and we are often interested in the smallest superkey. A superkey for which no subset is a superkey is called a <strong>candidate key</strong>.</li>
+<li>A <strong>primary key</strong> is a candidate key (there may be more than one) chosen by the DB designer to identify entities in an entity set.</li>
+<li>The <strong>primary key</strong> is denoted in an ER diagram by <strong>underlining</strong>.</li>
+<li>An entity that has a primary key is called a <strong>strong entity</strong>.</li>
+<li>An entity set that does not possess sufficient attributes to form a primary key is called a <strong>weak entity set</strong>.
+<ul>
+<li>{Name,Number} is not a superkey, and therefore course is a <strong>weak entity</strong>.</li>
+</ul>
+</li>
+<li>In order to be able to uniquely refer to an item in a weak entity set we must consider some (or all) of its attributes in conjunction with some strong entities primary key. The entity whose primary key is being used is called the <strong>identifying owner</strong>.</li>
+</ul>
+<h2 id="er-design-decisions"><strong>ER Design Decisions</strong></h2>
+<ul>
+<li>The use of an attribute or entity set to represent an object.</li>
+<li>Whether a real-world concept is best expressed by an entity set or a relationship set.</li>
+<li>The use of a ternary relationship versus a pair of binary relationships.</li>
+<li>The use of a strong or weak entity set.</li>
+<li>The use of aggregation – can treat the aggregate entity set as a single unit without concern for the details of its internal structure.</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://2097657502.github.io/post-images/1664755894704.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Processes]]></title>
+        <id>https://2097657502.github.io/post/processes/</id>
+        <link href="https://2097657502.github.io/post/processes/">
+        </link>
+        <updated>2022-09-24T04:06:55.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="processes"><strong>Processes</strong></h1>
+<ul>
+<li>Definition: A <strong>process</strong> is an instance of a running program.</li>
+<li>Process provides each program with two key abstractions:
+<ul>
+<li>Logical control flow
+<ul>
+<li>Each program seems to have exclusive use of the CPU</li>
+</ul>
+</li>
+<li>Private copy of program state
+<ul>
+<li>Register values (PC, stack pointer, general registers, condition codes)</li>
+<li>Private virtual address space. Program has exclusive access to main memory Including stack<br>
+<img src="https://2097657502.github.io/post-images/1664208785300.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="multiprocessing-the-illusion"><strong>Multiprocessing:  The Illusion</strong></h1>
+<figure data-type="image" tabindex="1"><img src="https://2097657502.github.io/post-images/1664209260101.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Computer runs many processes simultaneously
+<ul>
+<li>Applications for one or more users
+<ul>
+<li>Web browsers, email clients, editors,.....</li>
+</ul>
+</li>
+<li>Background tasks
+<ul>
+<li>Monitoring network &amp; I/O devices</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="multiprocessing-the-traditional-reality"><strong>Multiprocessing: The (Traditional) Reality</strong></h1>
+<figure data-type="image" tabindex="2"><img src="https://2097657502.github.io/post-images/1664209323294.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Single Processor Executes Multiple Processes Concurrently
+<ul>
+<li>Process executions interleaved (multitasking)</li>
+<li>Address spaces managed by virtual memory system</li>
+<li>Register values for non-executing processes saved in memory</li>
+</ul>
+</li>
+</ul>
+<h1 id="multiprocessing-the-new-reality"><strong>Multiprocessing: The (New) Reality</strong></h1>
+<figure data-type="image" tabindex="3"><img src="https://2097657502.github.io/post-images/1664209410021.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Multicore processors
+<ul>
+<li>Multiple CPUs on single chip</li>
+<li>Share main memory (and some of the caches)</li>
+<li>Each can execute a separate process
+<ul>
+<li>Scheduling of processes onto cores done by OS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="multithreading-the-illusion"><strong>Multithreading: The Illusion</strong></h1>
+<figure data-type="image" tabindex="4"><img src="https://2097657502.github.io/post-images/1664209535472.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Single process runs multiple threads concurrently</li>
+<li>Each has own control flow and runtime state
+<ul>
+<li>But view part of memory as shared among all threads</li>
+<li>One thread can read/write the state of another</li>
+</ul>
+</li>
+</ul>
+<h1 id="concurrent-processes"><strong>Concurrent Processes</strong></h1>
+<ul>
+<li>Two processes run <strong>concurrently</strong> (are concurrent) if their flows overlap in time</li>
+<li>Otherwise, they are <strong>sequential</strong></li>
+<li>Examples (running on single core):
+<ul>
+<li>Concurrent: A &amp; B, A &amp; C</li>
+<li>Sequential: B &amp; C<br>
+<img src="https://2097657502.github.io/post-images/1664209745008.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h1 id="user-view-of-concurrent-processes"><strong>User View of Concurrent Processes</strong></h1>
+<ul>
+<li>Control flows for concurrent processes are physically disjoint in time</li>
+<li>However, we can think of concurrent processes as running in parallel with each other</li>
+</ul>
+<h1 id="context-switching"><strong>Context Switching</strong></h1>
+<ul>
+<li>Processes are managed by a shared chunk of OS code</li>
+<li>called the <strong>kernel</strong>
+<ul>
+<li>Important: the kernel is not a separate process, but rather runs as part of some user process</li>
+</ul>
+</li>
+<li>Control flow passes from one process to another via a <strong>context switch</strong><br>
+<img src="https://2097657502.github.io/post-images/1664210016997.png" alt="" loading="lazy"></li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[皮的第一天]]></title>
+        <id>https://2097657502.github.io/post/pi-de-di-yi-tian/</id>
+        <link href="https://2097657502.github.io/post/pi-de-di-yi-tian/">
+        </link>
+        <updated>2022-09-21T00:18:14.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>最近是联想群面。</strong><br>
+<strong>为了能在群面上有着良好发挥。</strong><br>
+<strong>ｂ（￣▽￣）ｄ</strong></p>
+<p><strong>女朋友那是勤奋呀。</strong><br>
+<strong>网上搜题，拼命做笔记，满满几页。</strong><br>
+<strong>还准备了中英文的自我介绍。</strong><br>
+<strong>╰（￣▽￣）╭</strong><br>
+<img src="https://2097657502.github.io/post-images/1663908142735.jpg" alt="" loading="lazy"></p>
+<p><strong>不仅如此。</strong><br>
+<strong>她还早早洗了澡画了妆，等待着群面时间的到来。</strong><br>
+<strong>结果因为时差问题。</strong><br>
+<strong>她算错时间了直接错过了面试！</strong><br>
+**（╯‵□′）╯︵┴─┴ **<br>
+<img src="https://2097657502.github.io/post-images/1663907875719.jfif" alt="" loading="lazy"></p>
+<p><strong>哈哈哈哈哈哈！</strong><br>
+<strong>要笑死。</strong><br>
+<strong>（/≧▽≦/）</strong></p>
+<p><strong>画了2小时的妆容。</strong><br>
+<strong>白画！</strong><br>
+<img src="https://2097657502.github.io/post-images/1663908514031.jfif" alt="" loading="lazy"></p>
+<p><strong>而且准备群面前还好好的睡了一觉，导致现在睡不着。</strong><br>
+<strong>凌晨2点又不想出去。</strong><br>
+<strong>哈哈哈哈。</strong><br>
+<img src="https://2097657502.github.io/post-images/1663907915554.jfif" alt="" loading="lazy"></p>
+<p><strong>真的要笑死。</strong><br>
+<strong>记录怨种女友的第一天。</strong><br>
+<img src="https://2097657502.github.io/post-images/1663908009765.jfif" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Database] Ch1 Notebook]]></title>
+        <id>https://2097657502.github.io/post/ch1-notebook/</id>
+        <link href="https://2097657502.github.io/post/ch1-notebook/">
+        </link>
+        <updated>2022-09-19T02:49:36.000Z</updated>
+        <content type="html"><![CDATA[<p>（根据《数据库管理系统原理和设计》第3版所写）</p>
+<blockquote>
+<p>Chapter 1: Overview of Database System</p>
+</blockquote>
+<h2 id="database-vs-dmbs"><strong>Database VS DMBS</strong></h2>
+<ul>
+<li>Database:
+<ul>
+<li>A very large collection of data.</li>
+</ul>
+</li>
+<li>Database Management system(DMBS):
+<ul>
+<li>Software system designed to store, manage, and access databses.</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-need-to-learn"><strong>Why need to learn</strong></h2>
+<p>A DBMS allows us to store, modify, and query data.</p>
+<ul>
+<li>Enforcing Constraints:
+<ul>
+<li>A DBMS allows us to enforce all kinds of constraints to ensure our data is correct.</li>
+</ul>
+</li>
+<li>Scalability:
+<ul>
+<li>A DBMS enables us to store a very large scale of data.</li>
+</ul>
+</li>
+<li>Query Expressiveness:
+<ul>
+<li>With a DBMS we can search with much more expressive queries.</li>
+<li>With a DBMS we are completely isolated from the physical structure of our data. If we change the structure of our data (by adding a field, for example) or by changing the order of the data, nothing changes at the front end.</li>
+</ul>
+</li>
+<li>Different Views:
+<ul>
+<li>With a DBMS we can arrange for different people to have different views of the data.</li>
+</ul>
+</li>
+<li>Concurrency :
+<ul>
+<li>Suppose I begin to modify my file at the same time my TA is modifying it! This can lead to inconsistencies. A DBMS will automatically make sure that this cannot happen.</li>
+</ul>
+</li>
+<li>Crash Recovery:
+<ul>
+<li>A DBMS is able to guarantee 100% recovery from system crashes.</li>
+</ul>
+</li>
+<li>Security:
+<ul>
+<li>A DBMS will allow multiple levels of security.</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-use-a-dbms"><strong>Why use a DBMS</strong></h2>
+<ul>
+<li>Data independence</li>
+<li>Efficient data access</li>
+<li>Reduced application development time</li>
+<li>Data integrity and security</li>
+<li>Uniform data administration</li>
+<li>Concurrent access, recovery from crashes</li>
+</ul>
+<h2 id="why-study-databases"><strong>Why study Databases</strong></h2>
+<ul>
+<li>Shift from computation to information</li>
+<li>Datasets increasing in diversity and volume</li>
+<li>DBMS encompasses most of CS!!!</li>
+</ul>
+<h2 id="data-models"><strong>Data Models</strong></h2>
+<ul>
+<li>A data model is a collection of concepts for describing data.</li>
+<li>A schema is a description of a particular collection of data, using a given data model.</li>
+<li>he relational model is (still) the most widely used model today.
+<ul>
+<li>relation, basically a table with rows and (named) columns.</li>
+<li>schema, describes the tables and their columns.</li>
+</ul>
+</li>
+</ul>
+<h2 id="levels-of-abstraction"><strong>Levels of Abstraction</strong></h2>
+<ul>
+<li>External Schema/Views
+<ul>
+<li>describe how different users see the data</li>
+<li>Ex: Course_info(cid: string, cname: string, enrollment:integer)</li>
+</ul>
+</li>
+<li>Single Conceptual(logical) Schema
+<ul>
+<li>defines the logical structure of the database</li>
+<li>Ex: Students(sid: string, name: string, login: string, age: integer gpa:real)</li>
+</ul>
+</li>
+<li>Single Physical Schema
+<ul>
+<li>describes the files and indexes used under the hood</li>
+<li>Ex: Relations stored as unordered files.<br>
+<img src="https://2097657502.github.io/post-images/1663880866108.jpg" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="data-independence"><strong>Data Independence</strong></h2>
+<ul>
+<li>Applications are insulated from how data is structured and stored.</li>
+<li>Logical data Independence:
+<ul>
+<li>Protection from changes in logical structure of data</li>
+</ul>
+</li>
+<li>Physical data independence:
+<ul>
+<li>Protection from changes in physical structure of data</li>
+</ul>
+</li>
+<li>One of the most important benefits of using a DBMS!</li>
+</ul>
+<h2 id="structure-of-a-dbms"><strong>Structure of a DBMS</strong></h2>
+<ul>
+<li>A typical DBMS has a layered architecture</li>
+<li>The figure does not show th econcurrency contrul and recovery components</li>
+<li>This is one of several possible architectures; each system has its own variations.<br>
+<img src="https://2097657502.github.io/post-images/1664751812176.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="roles-in-a-dbms"><strong>Roles in a DBMS</strong></h2>
+<ul>
+<li>Database Administrator(DBA)
+<ul>
+<li>The &quot;super user&quot; for a database or a DBMS</li>
+<li>Handles physical DB design, tuning, performance monitoring, backup/restore, user/group management</li>
+</ul>
+</li>
+<li>Application Developer
+<ul>
+<li>Builds data-centric applications</li>
+<li>Involved with logical DB design, queries, and DB application tools</li>
+</ul>
+</li>
+<li>Data Analyst or End User
+<ul>
+<li>Non-expert who uses tools to interact w/the data</li>
+</ul>
+</li>
+<li>Data Engineer(new)
+<ul>
+<li>Develops/constructs/maintains Big Data platforms and data flows</li>
+<li>Uses multiple Big Data tools and technologies to prepare data products for consumption by Data Scientists</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【Pikachu靶场通关】暴力破解]]></title>
+        <id>https://2097657502.github.io/post/1/</id>
+        <link href="https://2097657502.github.io/post/1/">
+        </link>
+        <updated>2022-09-17T13:15:29.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>Burte Force<br>
+前期准备工具 Burp Suite</p>
+</blockquote>
+<h2 id="基于表单的暴力破解"><strong>基于表单的暴力破解</strong></h2>
+<ul>
+<li>网站登陆系统不需要输入验证码，没有任何保护措施。</li>
+<li>只需要直接暴力破解就可以了。<br>
+这是一开始看到的样子：<br>
+<img src="https://2097657502.github.io/post-images/1663909006495.png" alt="" loading="lazy"><br>
+打开burp suite工具，<strong>把proxy-&gt;Intercept-&gt;Intercept is off =&gt; Intercept is on</strong>。如图所示：<br>
+<img src="https://2097657502.github.io/post-images/1663909082482.png" alt="" loading="lazy"><br>
+接着随便在上面输入账号和密码，点login。紧接着在Burp Suite上就会看到显示。<br>
+<img src="https://2097657502.github.io/post-images/1663909149688.png" alt="" loading="lazy"><br>
+鼠标右击点击 <strong>sent to Intruder</strong>，然后转到<strong>Intruder</strong>页面。Attack type 选择 <strong>Cluster bomb</strong>.<br>
+点击右边的<strong>clean $</strong>，然后选中username 跟 passwork &quot;=&quot; 后面到字母，点击<strong>add $</strong>。<br>
+<img src="https://2097657502.github.io/post-images/1663909492959.png" alt="" loading="lazy"><br>
+然后选择<strong>Payloads</strong>, <strong>Payload set 1</strong> 就是之前选的username。<br>
+然后在下面<strong>add</strong> 或者<strong>load</strong>入username字典（字典必须包含正确的username）<br>
+<img src="https://2097657502.github.io/post-images/1663909701673.png" alt="" loading="lazy"><br>
+然后在<strong>payload set</strong> 那里选择<strong>2</strong>。2就是表明之前选的password。<br>
+然后在下面<strong>add</strong> 或者<strong>load</strong>入password字典（字典必须包含正确的password）<br>
+最后点击<strong>Start attack</strong><br>
+<img src="https://2097657502.github.io/post-images/1663909904908.png" alt="" loading="lazy"><br>
+然后点击Length，找到数字唯一的就是正确的账号跟密码了。<br>
+<img src="https://2097657502.github.io/post-images/1663910148924.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="验证码绕过on-server"><strong>验证码绕过(on server)</strong></h2>
+<p>前面的步骤都一样，到了~~<strong>sent to Intruder</strong>~~，就有所不同了。<br>
+这次先 <strong>Sent to Repeater</strong>，按<strong>send</strong>就会发现<strong>右边</strong>显示验证码输入错误。<br>
+<img src="https://2097657502.github.io/post-images/1663910716063.png" alt="" loading="lazy"><br>
+我们在左边把验证码修改正确，按<strong>send</strong>，发现会提示username跟password错误。<br>
+<img src="https://2097657502.github.io/post-images/1663910903310.png" alt="" loading="lazy"><br>
+这次把username跟password修改一下，按send，发现还是提示username跟password错误。<br>
+<img src="https://2097657502.github.io/post-images/1663911031663.png" alt="" loading="lazy"><br>
+这说明只要页面不刷新，验证码就不会改变。这时就可以直接**send to Intruder **暴力破解密码了。</p>
+<h2 id="验证码绕过on-client"><strong>验证码绕过(on client)</strong></h2>
+<p>鼠标右击查看网页源代码，发现验证码是在前端进行判断的。<br>
+那么就可以不管验证码，直接抓包暴力破解密码就可以了。<br>
+找到正确的账号密码输入进去，只要把验证码填正确就可以了。<br>
+<img src="https://2097657502.github.io/post-images/1663911494580.png" alt="" loading="lazy"></p>
+<h2 id="token防爆破"><strong>Token防爆破？</strong></h2>
+<p>首先随便输入账号密码，然后进行抓包，发现有token值<br>
+<img src="https://2097657502.github.io/post-images/1663913797706.png" alt="" loading="lazy"><br>
+攻击模式选择<strong>Pitchfork</strong>，然后<strong>add</strong>三个元素进去<br>
+<img src="https://2097657502.github.io/post-images/1663913803044.png" alt="" loading="lazy"><br>
+找到<strong>Resource Pool</strong>，线程设置成<strong>1</strong>，延迟设置<strong>500</strong>防止丢包。<br>
+<img src="https://2097657502.github.io/post-images/1663913807113.png" alt="" loading="lazy"><br>
+<strong>Options</strong>，在<strong>Grep Extract</strong>里面<strong>add</strong>。<br>
+点击<strong>Refetch response</strong>，找到<strong>token</strong>值，<strong>选中</strong>，<strong>复制</strong>，按<strong>OK</strong><br>
+<img src="https://2097657502.github.io/post-images/1663913811424.png" alt="" loading="lazy"><br>
+返回<strong>Payloads</strong>，Playload1、2分别输入账号密码。<br>
+<strong>Playload3</strong> 选择<strong>Recursice grep</strong>。<br>
+下面把复制的<strong>token值</strong>粘贴进去。<br>
+<img src="https://2097657502.github.io/post-images/1663913815848.png" alt="" loading="lazy"><br>
+然后就可以开始攻击了。<br>
+<img src="https://2097657502.github.io/post-images/1663913821002.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[About]]></title>
+        <id>https://2097657502.github.io/post/about/</id>
+        <link href="https://2097657502.github.io/post/about/">
+        </link>
+        <updated>2022-09-14T08:17:19.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+</blockquote>
+<h2 id="关于本站">🏠 关于本站</h2>
+<p>说实话我也没想好要写什么。<br>
+只是把生活中的一些学习心得写上去。<br>
+就随便写写。<br>
+┓( ´∀` )┏</p>
+<h2 id="博主是谁">👨‍💻 博主是谁</h2>
+<p>本人咸鱼一条。<br>
+在准备当研的道路上一去不复返。<br>
+（ー人ー）</p>
+<p>争取做一条有理想的咸鱼。<br>
+(๑•̀ㅂ•́)و✧</p>
+<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
+<p><s>兴趣爱好就是当一条咸鱼。</s><br>
+兴趣爱好就是做一个对社会有用的人。<br>
+我是国家栋梁。<br>
+（=・ω・=）</p>
+<p>富强 民主 文明 和谐<br>
+自由 平等 公正 法治<br>
+爱国 敬业 诚信 友善<br>
+(*￣︶￣)</p>
+<h2 id="联系我呀">📬 联系我呀</h2>
+<p>想骂我？！<br>
+不可能！这辈子绝对不可能！<br>
+＜（￣︶￣）＞<br>
+<img src="https://2097657502.github.io//post-images/1663751599569.jfif" alt="" loading="lazy"></p>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+</blockquote>
+<h2 id="关于本站">🏠 关于本站</h2>
+<p>说实话我也没想好要写什么。<br>
+只是把生活中的一些学习心得写上去。<br>
+就随便写写。<br>
+┓( ´∀` )┏</p>
+<h2 id="博主是谁">👨‍💻 博主是谁</h2>
+<p>本人咸鱼一条。<br>
+在准备当研的道路上一去不复返。<br>
+（ー人ー）</p>
+<p>争取做一条有理想的咸鱼。<br>
+(๑•̀ㅂ•́)و✧</p>
+<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
+<p><s>兴趣爱好就是当一条咸鱼。</s><br>
+兴趣爱好就是做一个对社会有用的人。<br>
+我是国家栋梁。<br>
+（=・ω・=）</p>
+<p>富强 民主 文明 和谐<br>
+自由 平等 公正 法治<br>
+爱国 敬业 诚信 友善<br>
+(*￣︶￣)</p>
+<h2 id="联系我呀">📬 联系我呀</h2>
+<p>想骂我？！<br>
+不可能！这辈子绝对不可能！<br>
+＜（￣︶￣）＞<br>
+<img src="https://2097657502.github.io/post-images/1663751599569.jfif" alt="" loading="lazy"></p>
+<!-- more -->
+]]></content>
+    </entry>
+</feed>
